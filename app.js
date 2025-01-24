@@ -17,7 +17,11 @@ escrevemos dentro dos { } assim como o while, nesse caso nossa função vai ser 
 */
 function verificarChute() {
 
-console.log ('botão foi clicado');
+let numero1 = parseInt (prompt("insira um número inteiro"));
+let numero2 = parseInt (prompt("insira outro número inteiro"))
+let soma = (numero1 + numero2);
+alert(`a soma  dos números é ${soma}`);
+
 
 }
 
