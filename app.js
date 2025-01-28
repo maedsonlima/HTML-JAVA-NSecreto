@@ -6,12 +6,15 @@ function gerarNumeroAleatorio () {
 }
 
 function exibirTextoNaTela(tag, texto) {   
- let campo = document.querySelector(tag);
-  
-campo.innerHTML = texto;
+  let campo = document.querySelector(tag);
+  campo.innerHTML = texto;
 }
-exibirTextoNaTela ('h1', 'Jogo do número secreto');
-exibirTextoNaTela ('p', 'Escolha um número entre 1 e 10');
+
+function mensagemInicial () {
+    exibirTextoNaTela ('h1', 'Jogo do número secreto');
+    exibirTextoNaTela ('p', 'Escolha um número entre 1 e 10');
+}
+mensagemInicial();
 
 function verificarChute () {
   let chute = parseInt(document.querySelector('input').value);
@@ -20,9 +23,12 @@ function verificarChute () {
 
     let palavraTentativa = tentativa > 1? 'tentativas' : 'tentativa';  
     let mensagemTentativas = (`Você acertou com ${tentativa} ${palavraTentativa}`)
-      
       exibirTextoNaTela ('h1', 'Acertou!');
       exibirTextoNaTela ('p', mensagemTentativas);
+      document.getElementById('reiniciar').removeAttribute('disabled');
+// Habilita o botão com o ID 'reiniciar' removendo o atributo 'disabled'
+// Ele busca o elemento pelo ID, e remove o atributo que desabilita.
+
   }else{
       if(chute > numeroSecreto){
         exibirTextoNaTela ('p', 'o número é menor');
@@ -38,5 +44,12 @@ function limparCampo() {
   chute.value = '';
 }
 
+function reiniciarJogo() {
+  mensagemInicial();
+  numeroSecreto = gerarNumeroAleatorio();
+  limparCampo();  
+  tentativas = 1;
+  document.getElementById('reiniciar').setAttribute('disabled', true);
+}
 
 
